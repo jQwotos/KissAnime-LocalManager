@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% block content %}
+<h4>Download link</h4>
+<input type="text" name="url" />
+<table>
+  <tr>
+    <th>Download ?</th>
+    <th>Name of Episode</th>
+    <th>Link to Episode</th>
+  </tr>
+  {% for episode in episodes %}
+  <tr>
+    <th><input type="checkbox" name="downloaded-wanted" value="episode.id" /></th>
+    <th>{{ episode.title }}</th>
+    <th>{{ episode.link }}</th>
+  </tr>
+  {% endfor %}
+</table>
+<h4>Already Downloaded</h4>
+<ul class='collection'>
+  {% for downloaded in downloads %}
+  <li class="collection-item">
+    <input type="checkbox" name="deletion-wanted" value="{{ downloaded.id }}" /><Label>{{ downloaded.title }} | {{ downloaded.link }}</Label>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
